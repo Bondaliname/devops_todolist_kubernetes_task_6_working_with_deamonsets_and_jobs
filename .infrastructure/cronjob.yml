@@ -10,21 +10,22 @@ spec:
   successfulJobsHistoryLimit: 10
   failedJobsHistoryLimit: 5
   jobTemplate:
-   spec:
-     template:
-       spec:
-         containers:
-         - name: todoapp-cronjob
-           image: busyboxplus:curl
-           resources:
-              requests:
-                cpu: "100m"
-                memory: "100Mi"
-              limits:
-                cpu: "200m"
-                memory: "200Mi"
-           command:
-           - /bin/sh
-           - -c
-           - curl -s http://todoapp-service.todoapp.svc.cluster.local/api/health
-         restartPolicy: OnFailure
+    spec:
+      template:
+        spec:
+          containers:
+          - name: todoapp-cronjob
+            image: busyboxplus:curl
+            resources:
+                requests:
+                  cpu: "100m"
+                  memory: "100Mi"
+                limits:
+                  cpu: "200m"
+                  memory: "200Mi"
+            command:
+            - /bin/sh
+            - -c
+            - curl -s http://todoapp-service.todoapp.svc.cluster.local/api/health
+          restartPolicy: OnFailure
+          
